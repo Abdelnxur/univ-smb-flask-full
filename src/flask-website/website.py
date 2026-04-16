@@ -104,3 +104,57 @@ def loadbalancer_add():
 def loadbalancer_delete(id):
     requests.delete(f"{API}/loadbalancer/{id}")
     return redirect(url_for('loadbalancers'))
+
+# Télécharge la config d'un webserver
+@app.route("/webserver/download/<int:id>")
+def webserver_download(id):
+    item = requests.get(f"{API}/webserver/{id}").json()
+    config = f"""http {{
+    server {{
+        listen {item['port']};
+        root {item['root']};
+
+        location / {{
+            index index.html index.htm;
+        }}
+    }}
+}}"""
+    response = app.response_class(config, mimetype='text/plain')
+    response.headers['Content-Disposition'] = f'attachment; filename={item["name"]}.conf'
+    return response
+
+# Télécharge la config d'un reverse proxy
+@app.route("/reverseproxie/download/<int:id>")
+def reverseproxie_download(id):
+    item = requests.get(f"{API}/reverseproxie/{id}").json()
+    config = f"""http {{
+    server {{
+        listen {item['ip_bind']};
+
+        location / {{
+            proxy_pass {item['pass']};
+        }}
+    }}
+}}"""
+    response = app.response_class(config, mimetype='text/plain')
+    response.headers['Content-Disposition'] = f'attachment; filename={item["name"]}.conf'
+    return response
+
+# Télécharge la config d'un load balancer
+@app.route("/loadbalancer/download/<int:id>")
+def loadbalancer_download(id):
+    item = requests.get(f"{API}/loadbalancer/{id}").json()
+    config = f"""http {{
+    upstream backend {{
+        server {item['ip_bind']};
+    }}
+
+    server {{
+        location / {{
+            proxy_pass {item['pass']};
+        }}
+    }}
+}}"""
+    response = app.response_class(config, mimetype='text/plain')
+    response.headers['Content-Disposition'] = f'attachment; filename={item["name"]}.conf'
+    return response

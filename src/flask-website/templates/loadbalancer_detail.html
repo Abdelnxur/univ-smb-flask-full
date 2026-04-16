@@ -2,11 +2,11 @@
 {% block title %}Détail Load Balancer{% endblock %}
 {% block content %}
 
-<div class="container">
-    <h2>{{ loadbalancer.name }}</h2>
-    <a href="{{ url_for('loadbalancers') }}" class="btn btn-secondary">Retour</a>
+<h2>{{ loadbalancer.name }}</h2>
+<a href="{{ url_for('loadbalancers') }}" class="btn btn-back">Retour</a>
+<a href="{{ url_for('loadbalancer_download', id=loadbalancer.id) }}" class="btn btn-add">Télécharger</a>
 
-    <pre class="config-block mt-3">
+<pre class="config-block">
 http {
     upstream backend {
         server {{ loadbalancer.ip_bind }};
@@ -18,7 +18,6 @@ http {
         }
     }
 }
-    </pre>
-</div>
+</pre>
 
 {% endblock %}

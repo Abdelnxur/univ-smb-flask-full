@@ -2,35 +2,33 @@
 {% block title %}Load Balancers{% endblock %}
 {% block content %}
 
-<div class="container">
-    <h2>Load Balancers</h2>
-    <a href="{{ url_for('loadbalancer_add') }}" class="btn btn-primary">+ Ajouter</a>
+<h2>Load Balancers</h2>
+<a href="{{ url_for('loadbalancer_add') }}" class="btn btn-add">+ Ajouter</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>IP</th>
-                <th>Pass</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for lb in loadbalancers %}
-            <tr>
-                <td>{{ lb.id }}</td>
-                <td>{{ lb.name }}</td>
-                <td>{{ lb.ip_bind }}</td>
-                <td>{{ lb.pass }}</td>
-                <td>
-                    <a href="{{ url_for('loadbalancer_detail', id=lb.id) }}" class="btn btn-info">Détail</a>
-                    <a href="{{ url_for('loadbalancer_delete', id=lb.id) }}" class="btn btn-danger">Supprimer</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>IP</th>
+            <th>Pass</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for lb in loadbalancers %}
+        <tr>
+            <td>{{ lb.id }}</td>
+            <td>{{ lb.name }}</td>
+            <td>{{ lb.ip_bind }}</td>
+            <td>{{ lb.pass }}</td>
+            <td>
+                <a href="{{ url_for('loadbalancer_detail', id=lb.id) }}" class="btn btn-detail">Détail</a>
+                <a href="{{ url_for('loadbalancer_delete', id=lb.id) }}" class="btn btn-delete">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

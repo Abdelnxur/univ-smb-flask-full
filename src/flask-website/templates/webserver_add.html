@@ -2,29 +2,19 @@
 {% block title %}Ajouter Webserver{% endblock %}
 {% block content %}
 
-<div class="container">
-    <h2>Ajouter un Webserver</h2>
-    <a href="{{ url_for('webservers') }}" class="btn btn-secondary">Retour</a>
+<h2>Ajouter un Webserver</h2>
+<a href="{{ url_for('webservers') }}" class="btn btn-back">Retour</a>
 
-    <form method="POST">
-        <div class="mb-3">
-            <label>Nom</label>
-            <input type="text" name="name" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label>IP</label>
-            <input type="text" name="ip_bind" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label>Port</label>
-            <input type="number" name="port" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label>Root</label>
-            <input type="text" name="root" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Ajouter</button>
-    </form>
-</div>
+<form method="POST">
+    <label>Nom</label>
+    <input type="text" name="name" required placeholder="Ex: Mon Serveur">
+    <label>IP</label>
+    <input type="text" name="ip_bind" required placeholder="Ex: 192.168.1.1">
+    <label>Port</label>
+    <input type="number" name="port" required placeholder="Ex: 80">
+    <label>Root</label>
+    <input type="text" name="root" required placeholder="Ex: /www/data">
+    <button type="submit" class="btn btn-add">Ajouter</button>
+</form>
 
 {% endblock %}

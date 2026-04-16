@@ -2,35 +2,33 @@
 {% block title %}Reverse Proxies{% endblock %}
 {% block content %}
 
-<div class="container">
-    <h2>Reverse Proxies</h2>
-    <a href="{{ url_for('reverseproxie_add') }}" class="btn btn-primary">+ Ajouter</a>
+<h2>Reverse Proxies</h2>
+<a href="{{ url_for('reverseproxie_add') }}" class="btn btn-add">+ Ajouter</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nom</th>
-                <th>IP</th>
-                <th>Pass</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for rp in reverseproxies %}
-            <tr>
-                <td>{{ rp.id }}</td>
-                <td>{{ rp.name }}</td>
-                <td>{{ rp.ip_bind }}</td>
-                <td>{{ rp.pass }}</td>
-                <td>
-                    <a href="{{ url_for('reverseproxie_detail', id=rp.id) }}" class="btn btn-info">Détail</a>
-                    <a href="{{ url_for('reverseproxie_delete', id=rp.id) }}" class="btn btn-danger">Supprimer</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>IP</th>
+            <th>Pass</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rp in reverseproxies %}
+        <tr>
+            <td>{{ rp.id }}</td>
+            <td>{{ rp.name }}</td>
+            <td>{{ rp.ip_bind }}</td>
+            <td>{{ rp.pass }}</td>
+            <td>
+                <a href="{{ url_for('reverseproxie_detail', id=rp.id) }}" class="btn btn-detail">Détail</a>
+                <a href="{{ url_for('reverseproxie_delete', id=rp.id) }}" class="btn btn-delete">Supprimer</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

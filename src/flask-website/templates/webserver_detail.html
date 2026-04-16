@@ -2,11 +2,11 @@
 {% block title %}Détail Webserver{% endblock %}
 {% block content %}
 
-<div class="container">
-    <h2>{{ webserver.name }}</h2>
-    <a href="{{ url_for('webservers') }}" class="btn btn-secondary">Retour</a>
+<h2>{{ webserver.name }}</h2>
+<a href="{{ url_for('webservers') }}" class="btn btn-back">Retour</a>
+<a href="{{ url_for('webserver_download', id=webserver.id) }}" class="btn btn-add">Télécharger</a>
 
-    <pre class="config-block mt-3">
+<pre class="config-block">
 http {
     server {
         listen {{ webserver.port }};
@@ -17,7 +17,6 @@ http {
         }
     }
 }
-    </pre>
-</div>
+</pre>
 
 {% endblock %}

@@ -1,2 +1,16 @@
-[{"id": 1, "name": "WS Inter 1", "ip_bind": "172.0.0.1", "port": 80, "root": "/www/data"},
-{"id": 2, "name": "WS Inter 2", "ip_bind": "172.0.0.2", "port": 8080, "root": "/www/data2"}]
+[
+    {
+        "id": 1,
+        "name": "WS Inter 1",
+        "ip_bind": "172.0.0.1",
+        "port": 80,
+        "root": "/www/data"
+    },
+    {
+        "id": 2,
+        "name": "WS Inter 2",
+        "ip_bind": "172.0.0.2",
+        "port": 8080,
+        "root": "/www/data2"
+    }
+]
