@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Ajouter Load Balancer{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Ajouter un Load Balancer</h2>
+    <a href="{{ url_for('loadbalancers') }}" class="btn btn-secondary">Retour</a>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label>Nom</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>IP</label>
+            <input type="text" name="ip_bind" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Pass</label>
+            <input type="text" name="pass" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Ajouter Webserver{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Ajouter un Webserver</h2>
+    <a href="{{ url_for('webservers') }}" class="btn btn-secondary">Retour</a>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label>Nom</label>
+            <input type="text" name="name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>IP</label>
+            <input type="text" name="ip_bind" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Port</label>
+            <input type="number" name="port" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Root</label>
+            <input type="text" name="root" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    </form>
+</div>
+
+{% endblock %}

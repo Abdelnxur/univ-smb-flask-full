@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Détail Load Balancer{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>{{ loadbalancer.name }}</h2>
+    <a href="{{ url_for('loadbalancers') }}" class="btn btn-secondary">Retour</a>
+
+    <pre class="config-block mt-3">
+http {
+    upstream backend {
+        server {{ loadbalancer.ip_bind }};
+    }
+
+    server {
+        location / {
+            proxy_pass {{ loadbalancer.pass }};
+        }
+    }
+}
+    </pre>
+</div>
+
+{% endblock %}

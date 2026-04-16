@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Détail Webserver{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>{{ webserver.name }}</h2>
+    <a href="{{ url_for('webservers') }}" class="btn btn-secondary">Retour</a>
+
+    <pre class="config-block mt-3">
+http {
+    server {
+        listen {{ webserver.port }};
+        root {{ webserver.root }};
+
+        location / {
+            index index.html index.htm;
+        }
+    }
+}
+    </pre>
+</div>
+
+{% endblock %}

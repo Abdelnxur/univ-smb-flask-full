@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Détail Reverse Proxy{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>{{ reverseproxie.name }}</h2>
+    <a href="{{ url_for('reverseproxies') }}" class="btn btn-secondary">Retour</a>
+
+    <pre class="config-block mt-3">
+http {
+    server {
+        listen {{ reverseproxie.ip_bind }};
+
+        location / {
+            proxy_pass {{ reverseproxie.pass }};
+        }
+    }
+}
+    </pre>
+</div>
+
+{% endblock %}

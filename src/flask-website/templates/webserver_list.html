@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %}Webservers{% endblock %}
+{% block content %}
+
+<div class="container">
+    <h2>Webservers</h2>
+    <a href="{{ url_for('webserver_add') }}" class="btn btn-primary">+ Ajouter</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>IP</th>
+                <th>Port</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ws in webservers %}
+            <tr>
+                <td>{{ ws.id }}</td>
+                <td>{{ ws.name }}</td>
+                <td>{{ ws.ip_bind }}</td>
+                <td>{{ ws.port }}</td>
+                <td>
+                    <a href="{{ url_for('webserver_detail', id=ws.id) }}" class="btn btn-info">Détail</a>
+                    <a href="{{ url_for('webserver_delete', id=ws.id) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
